@@ -3,7 +3,7 @@ on: [push]
 jobs:
 
   deploy_zip:
-    name: deploy lambda function
+    name: Deploy lambda function
     runs-on: ubuntu-latest
     steps:
       - name: checkout source code
