@@ -1,0 +1,22 @@
+{
+  "name": "resize-image-lambda",
+  "version": "1.0.0",
+  "description": "resize images from bucket lambda function",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fernanda-Kipper/resize-image-lambda.git"
+  },
+  "author": "Fernanda Kipper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fernanda-Kipper/resize-image-lambda/issues"
+  },
+  "homepage": "https://github.com/Fernanda-Kipper/resize-image-lambda#readme",
+  "dependencies": {
+    "sharp": "^0.32.3"
+  }
+}

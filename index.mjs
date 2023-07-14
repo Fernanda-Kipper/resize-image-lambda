@@ -60,7 +60,7 @@ async function putObject(dstBucket, dstKey, content) {
           ContentType: "image"
         };
       
-        const putResult = await s3.send(new PutObjectCommand(destparams));
+        const putResult = await client.send(new PutObjectCommand(destparams));
 
         return putResult;
       
