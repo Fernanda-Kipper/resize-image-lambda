@@ -26,7 +26,7 @@ export const handler = async(event) => {
                     try {    
                     var output_buffer = await sharp(content_buffer).resize(width).toBuffer();
 
-                    await putObject('thumbnails-output-files', objectKey, output_buffer);
+                    await putObject('thumbnails-output-file', objectKey, output_buffer);
 
                     } catch (error) {
                         console.log(error);
