@@ -8,6 +8,7 @@ export const handler = async(event) => {
 
     if(event?.Records && event.Records.length > 0) {
         for(const record of event.Records){
+            console.log(record);
             const bucketName = record.s3.bucket.name;
             const objectKey = record.object.key;
         
