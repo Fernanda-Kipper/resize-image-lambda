@@ -7,6 +7,7 @@ const client = new S3Client({ region: 'us-east-1' })
 export const handler = async(event) => {
 
     if(event?.Records && event.Records.length > 0) {
+        console.log(event.Records)
         for(record of event.Records){
             const bucketName = record.s3.bucket.name;
             const objectKey = record.object.key;
