@@ -26,7 +26,24 @@ export const handler = async(event) => {
                     try {    
                     var output_buffer = await sharp(content_buffer).resize(width).toBuffer();
 
-                    await putObject('thumbnails-output-file', objectKey, output_buffer);
+                    //await putObject('thumbnails-output-file', objectKey, output_buffer);
+
+                    try {
+                        const destparams = {
+                          Bucket: 'thumbnails-output-file',
+                          Key: objectKey,
+                          Body: output_buffer,
+                          ContentType: "image"
+                        };
+                      
+                        const putResult = await client.send(new PutObjectCommand(destparams));
+                
+                        return putResult;
+                      
+                        } catch (error) {
+                          console.log(error);
+                          return;
+                        }
 
                     } catch (error) {
                         console.log(error);
