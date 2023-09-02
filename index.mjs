@@ -9,6 +9,7 @@ export const handler = async(event) => {
         for(const record of event.Records){
             const bucketName = record.s3.bucket.name;
             const objectKey = record.s3.object.key;
+            const objectType = record.s3.object.type;
         
             const getCommand = new GetObjectCommand({
                 Bucket: bucketName,
@@ -25,7 +26,7 @@ export const handler = async(event) => {
                     try {    
                     var output_buffer = await sharp(content_buffer).resize(width).toBuffer();
 
-                    await putObject('thumbnails-output-file', objectKey, output_buffer);
+                    await putObject('thumbnails-output-file', objectKey, output_buffer, );
 
                     } catch (error) {
                         console.log(error);
@@ -54,8 +55,8 @@ async function putObject(dstBucket, dstKey, content) {
     try {
         const putCommand = new PutObjectCommand({
           Bucket: dstBucket,
-          Key: "teste.txt",
-          Body: "hello word",
+          Key: dstKey,
+          Body: content,
           ContentType: "image"
         });
       
