@@ -5,19 +5,18 @@ import sharp from 'sharp';
 const client = new S3Client({ region: 'us-east-1' })
 
 export const handler = async(event) => {
-
     if(event?.Records && event.Records.length > 0) {
         for(const record of event.Records){
             const bucketName = record.s3.bucket.name;
             const objectKey = record.s3.object.key;
         
-            const command = new GetObjectCommand({
+            const getCommand = new GetObjectCommand({
                 Bucket: bucketName,
                 Key: objectKey
             });
 
             try {
-                const response = await client.send(command);
+                const response = await client.send(getCommand);
                 var stream = response.Body;
                 if (stream instanceof Readable) {
                     var content_buffer = Buffer.concat(await stream.toArray());
